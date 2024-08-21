@@ -11,6 +11,7 @@ interface FetchGameResponse {
     id: number;
     name: string;
     slug: string;
+    
   }
   
  export interface Game {
@@ -18,6 +19,7 @@ interface FetchGameResponse {
     name: string;
     background_image: string;
     parent_platforms: {platform: Platform}[];
+    metacritic: number;
   }
 
 const useGame = () => {
