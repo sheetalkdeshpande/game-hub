@@ -1,18 +1,9 @@
-import { useState, useEffect } from "react";
-import apiClient from "../services/api-client";
-import { CanceledError } from "axios";
+
 import useData from "./useData";
-import { Genre } from "./useGenres";
-import { StepDescription } from "@chakra-ui/react";
 import { Platform } from "./usePlatform";
+import { GameQuery } from "../App";
 
-interface FetchGameResponse {
-    count: number;
-    results: Game[];
-  }
 
- 
-  
  export interface Game {
     id: number;
     name: string;
@@ -21,9 +12,9 @@ interface FetchGameResponse {
     metacritic: number;
   }
 
-const useGame = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => useData<Game>('/games', {params:{
-  genres: selectedGenre?.id, 
-  platform: selectedPlatform?.id} }, 
-  [selectedGenre?.id, selectedPlatform?.id]);
+const useGame = (gameQuery : GameQuery) => useData<Game>('/games', {params:{
+  genres: gameQuery.genre?.id, 
+  platform: gameQuery.platform?.id} }, 
+  [gameQuery]);
 
 export default useGame
