@@ -10,6 +10,7 @@ import { GameQuery } from "../App";
     background_image: string;
     parent_platforms: {platform: Platform}[];
     metacritic: number;
+    rating_top: number;
   }
 
 const useGame = (gameQuery : GameQuery) => useData<Game>('/games', {params:{
